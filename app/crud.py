@@ -25,3 +25,15 @@ def delete_task(db: Session, task_id: int):
         db.commit()
         return db_task
     return None
+
+# Функция редактирования задачи
+def update_task(db: Session, data: schemas.TaskUpdate):
+    task = get_task(db, data.id)
+    if task:
+        task.title = data.title
+        task.description = data.description
+        task.completed = data.completed
+        db.commit()
+        db.refresh(task)
+        return task
+    return None

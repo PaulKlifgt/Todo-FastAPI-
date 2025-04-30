@@ -10,6 +10,10 @@ class TaskBase(BaseModel):
 class TaskCreate(TaskBase):
     pass
 
+class TaskUpdate(TaskBase):
+    id: int
+    pass
+
 # Схема для отображения задачи
 class Task(TaskBase):
     id: int
